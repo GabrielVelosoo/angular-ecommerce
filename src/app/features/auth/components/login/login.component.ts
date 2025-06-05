@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginRequest } from '../../../../models/LoginRequest';
+import { LoginRequest } from '../../../../models/auth/LoginRequest';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -14,15 +15,25 @@ export class LoginComponent {
     senha: ''
   }
   showPassword: boolean = false;
-  loginError: boolean = false;
+  cadastrando: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   onSubmit() {
-    console.log(this.loginData.email + this.loginData.senha);
+    this.router.navigate(['/home']).then(r => {});
   }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  preparaCadastro(event: any) {
+    event.preventDefault();
+    this.cadastrando = true;
+  }
+
+  alteraCadastroParaFalse(event: any) {
+    event.preventDefault();
+    this.cadastrando = false;
   }
 }

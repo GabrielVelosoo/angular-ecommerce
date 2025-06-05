@@ -1,7 +1,7 @@
 <div class="login-page">
   <div class="login-container">
     <div class="login-title">
-      <h1> Acesse sua conta </h1>
+      <h1> {{ cadastrando ? 'Cadastre-se' : 'Entre na sua conta' }} </h1>
     </div>
     <form #loginForm="ngForm" class="login-form" (submit)="onSubmit()">
       <div class="login-form-group">
@@ -35,13 +35,15 @@
       </div>
 
       <div class="login-form-button-group">
-        <button type="submit"> Entrar </button>
+        <button type="submit" *ngIf="!cadastrando"> Entrar </button>
+        <button type="button" *ngIf="cadastrando"> Cadastrar </button>
       </div>
     </form>
 
     <div class="login-footer">
-      <p> Não tem uma conta? </p>
-      <a href="#"> Cadastre-se </a>
+      <p> {{ cadastrando ? 'Possui uma conta?' : 'Não tem uma conta?' }} </p>
+      <a href="#" *ngIf="!cadastrando" (click)="preparaCadastro($event)"> Cadastre-se </a>
+      <a href="#" *ngIf="cadastrando" (click)="alteraCadastroParaFalse($event)"> Entrar </a>
     </div>
   </div>
 </div>
