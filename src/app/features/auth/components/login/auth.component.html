@@ -1,0 +1,137 @@
+<div class="login-page">
+  <div class="login-container">
+    <div class="login-title">
+      <h1> {{ cadastrando ? 'Cadastre-se' : 'Entre na sua conta' }} </h1>
+    </div>
+
+    <div class="login-mensagens" *ngIf="erros">
+      <p>{{ erros.mensagem }}</p>
+    </div>
+
+    <form #loginForm="ngForm" class="login-form" (submit)="onSubmit()">
+      <div class="login-form-group-row" *ngIf="cadastrando">
+        <div class="login-form-group">
+          <label>Nome</label>
+          <input
+            type="text"
+            placeholder="Digite seu nome"
+            name="nome"
+            [(ngModel)]="registerData.nome"
+            required
+            class="login-form-control"
+          />
+          <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+            <p *ngIf="erro.campo == 'nome'">{{ erro.mensagem }}</p>
+          </div>
+        </div>
+
+        <div class="login-form-group">
+          <label>Sobrenome</label>
+          <input
+            type="text"
+            placeholder="Digite seu sobrenome"
+            name="sobrenome"
+            [(ngModel)]="registerData.sobrenome"
+            required
+            class="login-form-control"
+          />
+          <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+            <p *ngIf="erro.campo == 'sobrenome'">{{ erro.mensagem }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-form-group" *ngIf="cadastrando">
+        <label>CPF</label>
+        <input
+          type="text"
+          placeholder="Digite seu CPF"
+          name="cpf"
+          [(ngModel)]="registerData.cpf"
+          required
+          class="login-form-control"
+        />
+        <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+          <p *ngIf="erro.campo == 'cpf'">{{ erro.mensagem }}</p>
+        </div>
+      </div>
+
+      <div class="login-form-group" *ngIf="cadastrando">
+        <label>CEP</label>
+        <input
+          type="text"
+          placeholder="Digite seu CEP"
+          name="cep"
+          [(ngModel)]="registerData.cep"
+          required
+          class="login-form-control"
+        />
+        <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+          <p *ngIf="erro.campo == 'cep'">{{ erro.mensagem }}</p>
+        </div>
+      </div>
+
+      <div class="login-form-group" *ngIf="cadastrando">
+        <label>Data de nascimento</label>
+        <input
+          type="date"
+          placeholder="Digite sua data de nascimento"
+          name="dataNascimento"
+          [(ngModel)]="registerData.dataNascimento"
+          required
+          class="login-form-control"
+        />
+        <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+          <p *ngIf="erro.campo == 'dataNascimento'">{{ erro.mensagem }}</p>
+        </div>
+      </div>
+
+      <div class="login-form-group">
+        <label>E-mail</label>
+        <input
+          type="email"
+          placeholder="Digite seu e-mail"
+          name="email"
+          [(ngModel)]="loginData.email"
+          required
+          class="login-form-control"
+        />
+        <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+          <p *ngIf="erro.campo == 'email'">{{ erro.mensagem }}</p>
+        </div>
+      </div>
+
+      <div class="login-form-group">
+        <label>Senha</label>
+        <div class="login-password-input">
+          <input
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Digite sua senha"
+            name="senha"
+            [(ngModel)]="loginData.senha"
+            required
+            class="login-form-control"
+          />
+          <button type="button" class="login-toggle-password" (click)="togglePassword()">
+            <span *ngIf="showPassword" class="fa-solid fa-eye"></span>
+            <span *ngIf="!showPassword" class="fa-solid fa-eye-slash"></span>
+          </button>
+          <div class="login-mensagens-validacao" *ngFor="let erro of erros.erros">
+            <p *ngIf="erro.campo == 'senha'">{{ erro.mensagem }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-form-button-group">
+        <button type="submit" *ngIf="!cadastrando"> Entrar </button>
+        <button type="button" *ngIf="cadastrando" (click)="cadastrarCliente()"> Cadastrar </button>
+      </div>
+    </form>
+
+    <div class="login-footer">
+      <p> {{ cadastrando ? 'Já tem uma conta?' : 'Não tem uma conta?' }} </p>
+      <a href="#" *ngIf="!cadastrando" (click)="preparaCadastro($event)"> Cadastre-se </a>
+      <a href="#" *ngIf="cadastrando" (click)="alteraCadastroParaFalse($event)"> Entrar </a>
+    </div>
+  </div>
+</div>

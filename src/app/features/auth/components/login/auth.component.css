@@ -1,5 +1,5 @@
 .login-page {
-  height: 100vh;
+  height: 130vh;
   width: 100%;
   background-color: rgb(255, 0, 0);
   display: flex;
@@ -23,7 +23,16 @@
 .login-title > h1 {
   color: black;
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
+}
+
+.login-mensagens {
+  margin-bottom: 15px;
+}
+
+.login-mensagens > p {
+  font-size: small;
+  color: red;
 }
 
 .login-form {
@@ -33,6 +42,7 @@
 .login-form-group {
   margin-bottom: 15px;
   position: relative;
+  flex: 1;
 }
 
 .login-form-group > label {
@@ -40,6 +50,16 @@
   font-weight: bold;
   margin-bottom: 6px;
   color: black;
+}
+
+.login-mensagens-validacao > p {
+  font-size: small;
+  color: red;
+}
+
+.login-form-group-row {
+  display: flex;
+  gap: 1rem;
 }
 
 .login-form-control {
