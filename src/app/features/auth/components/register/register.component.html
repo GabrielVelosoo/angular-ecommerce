@@ -1,15 +1,15 @@
 <div class="login-page">
   <div class="login-container">
     <div class="login-title">
-      <h1> {{ cadastrando ? 'Cadastre-se' : 'Entre na sua conta' }} </h1>
+      <h1> Cadastre-se </h1>
     </div>
 
-    <div class="login-mensagens" *ngIf="erros">
+    <div class="login-mensagens-erro" *ngIf="erros">
       <p>{{ erros.mensagem }}</p>
     </div>
 
-    <form #loginForm="ngForm" class="login-form" (submit)="onSubmit()">
-      <div class="login-form-group-row" *ngIf="cadastrando">
+    <form #loginForm="ngForm" class="login-form">
+      <div class="login-form-group-row">
         <div class="login-form-group">
           <label>Nome</label>
           <input
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="login-form-group" *ngIf="cadastrando">
+      <div class="login-form-group">
         <label>CPF</label>
         <input
           type="text"
@@ -56,7 +56,7 @@
         </div>
       </div>
 
-      <div class="login-form-group" *ngIf="cadastrando">
+      <div class="login-form-group">
         <label>CEP</label>
         <input
           type="text"
@@ -71,7 +71,7 @@
         </div>
       </div>
 
-      <div class="login-form-group" *ngIf="cadastrando">
+      <div class="login-form-group">
         <label>Data de nascimento</label>
         <input
           type="date"
@@ -110,6 +110,7 @@
             name="senha"
             [(ngModel)]="loginData.senha"
             required
+            autocomplete="off"
             class="login-form-control"
           />
           <button type="button" class="login-toggle-password" (click)="togglePassword()">
@@ -123,15 +124,13 @@
       </div>
 
       <div class="login-form-button-group">
-        <button type="submit" *ngIf="!cadastrando"> Entrar </button>
-        <button type="button" *ngIf="cadastrando" (click)="cadastrarCliente()"> Cadastrar </button>
+        <button type="button" (click)="cadastrarCliente()"> Cadastrar </button>
       </div>
     </form>
 
     <div class="login-footer">
-      <p> {{ cadastrando ? 'Já tem uma conta?' : 'Não tem uma conta?' }} </p>
-      <a href="#" *ngIf="!cadastrando" (click)="preparaCadastro($event)"> Cadastre-se </a>
-      <a href="#" *ngIf="cadastrando" (click)="alteraCadastroParaFalse($event)"> Entrar </a>
+      <p> Já tem uma conta? </p>
+      <a href="#" (click)="entrar($event)"> Entrar </a>
     </div>
   </div>
 </div>

@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { AuthComponent } from './components/login/auth.component';
+import { RegisterComponent } from './components/register/register.component';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
+import { Oauth2CallbackComponent } from './components/oauth2-callback.component';
 
 @NgModule({
   declarations: [
-    AuthComponent
+    RegisterComponent,
+    Oauth2CallbackComponent
   ],
   imports: [
     CommonModule,

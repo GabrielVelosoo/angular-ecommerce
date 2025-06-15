@@ -26,13 +26,22 @@
   margin-bottom: 30px;
 }
 
-.login-mensagens {
+.login-mensagens-erro {
   margin-bottom: 15px;
 }
 
-.login-mensagens > p {
+.login-mensagens-erro > p {
   font-size: small;
   color: red;
+}
+
+.login-mensagens-sucesso {
+  margin-bottom: 15px;
+}
+
+.login-mensagens-sucesso > p {
+  font-size: small;
+  color: green;
 }
 
 .login-form {
@@ -78,7 +87,7 @@
 .login-toggle-password {
   position: absolute;
   right: 10px;
-  top: 50%;
+  top: 37%;
   transform: translateY(-50%);
   background: none;
   border: none;

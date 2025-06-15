@@ -1,49 +1,34 @@
 import { Component } from '@angular/core';
 import { LoginRequest } from '../../../../models/auth/LoginRequest';
-import { Router } from '@angular/router';
 import { RegisterRequest } from '../../../../models/auth/RegisterRequest';
 import { AuthService } from '../../services/auth.service';
 import { Erro } from '../../../../models/Erro';
 
 @Component({
   standalone: false,
-  selector: 'app-login',
-  templateUrl: './auth.component.html',
-  styleUrl: './auth.component.css'
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class AuthComponent {
+export class RegisterComponent {
 
   loginData: LoginRequest = new LoginRequest();
   registerData: RegisterRequest = new RegisterRequest();
   showPassword: boolean = false;
   cadastrando: boolean = false;
   erros: Erro = new Erro();
+  mensagemSucesso: string = '';
 
   constructor(
-    private router: Router,
     private authService: AuthService
   ) { }
-
-  onSubmit() {
-    this.router.navigate(['/home']).then(r => {});
-  }
 
   togglePassword() {
     this.showPassword = !this.showPassword;
   }
 
-  preparaCadastro(event: any) {
-    event.preventDefault();
-    this.registerData = new RegisterRequest();
-    this.erros = new Erro();
-    this.cadastrando = true;
-  }
-
-  alteraCadastroParaFalse(event: any) {
-    event.preventDefault();
-    this.loginData = new LoginRequest();
-    this.erros = new Erro();
-    this.cadastrando = false;
+  async entrar(event: any) {
+    await this.authService.login(event);
   }
 
   cadastrarCliente() {
@@ -52,17 +37,16 @@ export class AuthComponent {
     this.authService
       .salvarCliente(this.registerData)
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
           this.loginData = new LoginRequest();
           this.registerData = new RegisterRequest();
           this.erros = new Erro();
           this.cadastrando = false;
+          this.mensagemSucesso = 'Cadastro realizado com sucesso, faça o register para acessar sua conta';
         },
         error: (errorResponse) => {
           this.erros = errorResponse.error;
           this.loginData.senha = '';
-          console.log(this.erros);
         }
       });
   }
