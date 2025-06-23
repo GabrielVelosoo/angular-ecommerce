@@ -18,7 +18,7 @@ export class Oauth2CallbackComponent implements OnInit {
     await this.oauthService.loadDiscoveryDocument();
     await this.oauthService.tryLoginCodeFlow();
 
-    console.log(this.oauthService.hasValidIdToken());
+    console.log('Access token: ', this.oauthService.getAccessToken());
 
     if(this.oauthService.hasValidIdToken()) {
       this.router.navigate(['']).then();

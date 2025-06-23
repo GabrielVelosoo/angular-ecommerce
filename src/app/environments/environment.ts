@@ -1,6 +1,9 @@
 export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:8080',
-  clientId: 'meu-client',
-  redirectUri: 'http://localhost:4200/auth/oauth2-callback'
+  auth: {
+    clientId: 'meu-client',
+    redirectUri: 'http://localhost:4200/auth/oauth2-callback',
+    silentRefreshRedirectUri: 'http://localhost:4200/silent-refresh.html'
+  }
 }

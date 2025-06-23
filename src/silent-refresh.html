@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Silent Refresh</title>
+</head>
+<body>
+  <script>
+    window.addEventListener('message', function (e) {
+      if(e.data === 'oauth2-login-success') {
+        window.close();
+      }
+    });
+  </script>
+</body>
+</html>

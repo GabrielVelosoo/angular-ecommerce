@@ -2,11 +2,13 @@ import { AuthConfig } from 'angular-oauth2-oidc';
 import { environment } from '../../../environments/environment';
 
 export const authConfig: AuthConfig = {
-  requireHttps: false,
   issuer: environment.apiBaseUrl,
-  redirectUri: environment.redirectUri,
-  clientId: environment.clientId,
-  scope: 'openid',
+  redirectUri: environment.auth.redirectUri,
+  clientId: environment.auth.clientId,
+  scope: 'openid USER',
   responseType: 'code',
-  showDebugInformation: true
+  showDebugInformation: true,
+  sessionChecksEnabled: true,
+  useSilentRefresh: true,
+  silentRefreshRedirectUri: environment.auth.silentRefreshRedirectUri
 }
