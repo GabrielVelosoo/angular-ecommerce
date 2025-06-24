@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './features/auth/services/auth.service';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { LayoutModule } from './layout/layout.module';
+import { HomeModule } from './features/home/home.module';
 
 @Component({
   selector: 'app-root',
   imports: [
-    RouterOutlet
+    RouterOutlet,
+    LayoutModule,
+    HomeModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
