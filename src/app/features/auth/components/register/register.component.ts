@@ -28,7 +28,8 @@ export class RegisterComponent {
   }
 
   async entrar(event: any) {
-    await this.authService.login(event);
+    event.preventDefault();
+    await this.authService.login();
   }
 
   cadastrarCliente() {

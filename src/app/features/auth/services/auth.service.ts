@@ -23,8 +23,7 @@ export class AuthService {
     this.oauthService.configure(authConfig);
   }
 
-  async login(event: any) {
-    event.preventDefault();
+  async login() {
     this.oauthService.initCodeFlow();
   }
 

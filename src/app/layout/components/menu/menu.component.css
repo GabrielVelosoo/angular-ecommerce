@@ -43,10 +43,61 @@
 }
 
 .nav > a:hover {
-  background-color: #34495e;
+  transform: scale(1.2);
 }
 
 .nav > a.active {
   background-color: #1abc9c;
   color: #fff;
+}
+
+.user {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+  font-size: 1.4rem;
+  color: #ecf0f1;
+  padding-right: 20px;
+}
+
+.user > a {
+  cursor: pointer;
+}
+
+.user a:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .esquerda {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .user {
+    justify-content: flex-end;
+    width: 100%;
+    padding-right: 0;
+    gap: 15px;
+    font-size: 1.2rem;
+    margin-top: 10px;
+  }
+
+  .logo > a {
+    font-size: 1.3rem;
+  }
 }

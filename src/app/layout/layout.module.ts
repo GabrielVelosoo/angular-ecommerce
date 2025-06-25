@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RouterModule } from '@angular/router';
+import {FooterComponent} from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    MenuComponent
+    MenuComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -15,7 +17,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     LayoutComponent,
-    MenuComponent
+    MenuComponent,
+    FooterComponent
   ]
 })
 export class LayoutModule { }
