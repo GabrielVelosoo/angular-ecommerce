@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -9,17 +11,17 @@ import { AuthService } from '../../../features/auth/services/auth.service';
 })
 export class MenuComponent {
 
-  menuAberto: boolean = false;
-
   constructor(
-    private authService: AuthService
+    private router: Router,
+    private authService: AuthService,
+    private oauthService: OAuthService,
   ) { }
 
-  entrar() {
-    this.authService.login().then();
-  }
-
-  toggleMenu() {
-    this.menuAberto = !this.menuAberto;
+  navegarUsuario() {
+    if(this.oauthService.hasValidAccessToken()) {
+      this.router.navigate(['my-account']).then();
+    } else {
+      this.authService.login().then();
+    }
   }
 }

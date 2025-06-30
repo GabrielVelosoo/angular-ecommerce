@@ -17,6 +17,11 @@ export const routes: Routes = [
         component: HomeComponent
       },
       {
+        path: 'my-account',
+        loadChildren: () => import('./features/account/account.module')
+          .then(m => m.AccountModule)
+      },
+      {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'
