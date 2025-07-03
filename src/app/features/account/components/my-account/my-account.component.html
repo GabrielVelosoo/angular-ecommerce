@@ -6,12 +6,12 @@
     <div class="account-info">
       <div class="info-item">
         <label>Nome e sobrenome</label>
-        <p></p>
+        <p>{{ usuario.nome }} {{ usuario.sobrenome }}</p>
       </div>
       <div class="info-item">
         <label>Informações pessoais</label>
-        <p>CPF</p>
-        <p>Data de nascimento</p>
+        <p>CPF</p> {{ usuario.cpf }}
+        <p>Data de nascimento</p> {{ usuario.dataNascimento }}
       </div>
     </div>
   </div>
@@ -21,7 +21,7 @@
     <div class="account-info">
       <div class="info-item">
         <label>Endereço de e-mail</label>
-        <p></p>
+        <p>{{ usuario.email }}</p>
       </div>
     </div>
   </div>

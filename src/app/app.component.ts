@@ -23,12 +23,6 @@ export class AppComponent {
   ) {
     this.authService.configureAuth();
     this.oauthService.loadDiscoveryDocumentAndTryLogin().then(() => {
-      if(this.oauthService.hasValidAccessToken()) {
-        console.log('Usuário autenticado')
-      } else {
-        console.log('Usuário não autenticado')
-      }
-
       this.oauthService.setupAutomaticSilentRefresh();
     });
   }
