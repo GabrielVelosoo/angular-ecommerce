@@ -27,6 +27,10 @@ export class AuthService {
     this.oauthService.initCodeFlow();
   }
 
+  logout() {
+    this.oauthService.logOut();
+  }
+
   salvarCliente(cliente: RegisterRequest): Observable<Cliente> {
     return this.http.post<Cliente>(this.apiUrl, cliente);
   }

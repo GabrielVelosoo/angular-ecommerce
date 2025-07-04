@@ -1,27 +1,44 @@
 <div class="account-container">
-  <h2>Minha Conta</h2>
-
-  <div class="account-section">
-    <h3>INFORMAÇÕES PESSOAIS</h3>
-    <div class="account-info">
-      <div class="info-item">
-        <label>Nome e sobrenome</label>
-        <p>{{ usuario.nome }} {{ usuario.sobrenome }}</p>
-      </div>
-      <div class="info-item">
-        <label>Informações pessoais</label>
-        <p>CPF</p> {{ usuario.cpf }}
-        <p>Data de nascimento</p> {{ usuario.dataNascimento }}
-      </div>
-    </div>
+  <div class="account-menu">
+    <h2>MINHA CONTA</h2>
+    <ul>
+      <li>Seu perfil</li>
+      <li>Altere a senha</li>
+      <li>Lista de endereços</li>
+      <li>Dados de pagamento</li>
+      <li>Histórico de pedidos</li>
+      <li (click)="logout()"><strong>Sair da sessão</strong></li>
+    </ul>
   </div>
 
-  <div class="account-section">
-    <h3>DADOS DE CONTATO</h3>
-    <div class="account-info">
-      <div class="info-item">
-        <label>Endereço de e-mail</label>
-        <p>{{ usuario.email }}</p>
+  <div class="account-content">
+    <h2>MINHA CONTA</h2>
+
+    <div class="account-section">
+      <h3>INFORMAÇÕES PESSOAIS</h3>
+      <div class="account-info">
+        <div class="info-item">
+          <label>Nome e sobrenome</label>
+          <p>{{ usuario.nome }} {{ usuario.sobrenome }}</p>
+
+          <label>Informações pessoais</label>
+          <p>CPF ou CNPJ <strong>{{ usuario.cpf }}</strong></p>
+          <p>Data de nascimento <strong>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</strong></p>
+        </div>
+
+        <div class="info-item" style="text-align: right;">
+          <a href="#">✎ Modificar</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="account-section">
+      <h3>DADOS DE CONTATO</h3>
+      <div class="account-info">
+        <div class="info-item">
+          <label>Endereço de e-mail</label>
+          <p>{{ usuario.email }}</p>
+        </div>
       </div>
     </div>
   </div>

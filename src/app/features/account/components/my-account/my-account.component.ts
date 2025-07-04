@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Cliente } from '../../../../models/Cliente';
+import { AuthService } from '../../../auth/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -13,7 +15,9 @@ export class MyAccountComponent implements OnInit {
   usuario: Cliente = new Cliente();
 
   constructor(
-    private usuarioService: UsuarioService
+    private usuarioService: UsuarioService,
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -39,5 +43,10 @@ export class MyAccountComponent implements OnInit {
           console.log(error);
         }
       });
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['home']).then();
   }
 }

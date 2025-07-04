@@ -10,5 +10,6 @@
 .layout-content {
   flex-grow: 1;
   padding: 30px;
+  margin-top: 20px;
   overflow-y: auto;
 }
