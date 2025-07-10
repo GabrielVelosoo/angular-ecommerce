@@ -5,10 +5,7 @@
     </div>
 
     <nav class="nav">
-      <a>Camisetas</a>
-      <a>Masculino</a>
-      <a>Feminino</a>
-      <a>Calças</a>
+      <a *ngFor="let categoria of categorias">{{ categoria.nome }}</a>
     </nav>
   </div>
 
