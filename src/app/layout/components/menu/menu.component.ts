@@ -14,6 +14,8 @@ import { Categoria } from '../../../models/Categoria';
 export class MenuComponent implements OnInit {
 
   categorias: Categoria[] = [];
+  menuAberto: boolean = false;
+  categoriaSelecionada: Categoria | null = null;
 
   constructor(
     private router: Router,
@@ -41,5 +43,15 @@ export class MenuComponent implements OnInit {
     } else {
       this.authService.login().then();
     }
+  }
+
+  abrirMenu(categoria: Categoria) {
+    this.categoriaSelecionada = categoria;
+    this.menuAberto = true;
+  }
+
+  fecharMenu() {
+    this.menuAberto = false;
+    this.categoriaSelecionada = null;
   }
 }

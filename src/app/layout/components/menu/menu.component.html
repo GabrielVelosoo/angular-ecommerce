@@ -5,7 +5,9 @@
     </div>
 
     <nav class="nav">
-      <a *ngFor="let categoria of categorias">{{ categoria.nome }}</a>
+      <a *ngFor="let categoria of categorias" (click)="abrirMenu(categoria)">
+        {{ categoria.nome }}
+      </a>
     </nav>
   </div>
 
@@ -16,3 +18,9 @@
     <a class="fa-solid fa-cart-shopping"></a>
   </div>
 </header>
+
+<app-sidebar-categorias
+  *ngIf="menuAberto"
+  [categoriaSelecionada]="categoriaSelecionada"
+  (fechar)="fecharMenu()"
+/>

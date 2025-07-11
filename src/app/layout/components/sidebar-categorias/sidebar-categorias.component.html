@@ -1,0 +1,12 @@
+<div class="sidebar-overlay" (click)="onFechar()"></div>
+
+<div class="sidebar">
+  <button class="fechar" (click)="onFechar()">←</button>
+  <h2 class="titulo">{{ categoriaSelecionada?.nome }}</h2>
+
+  <ul class="lista-subcategorias">
+    <li *ngFor="let sub of categoriaSelecionada?.subcategorias">
+      {{ sub.nome }}
+    </li>
+  </ul>
+</div>

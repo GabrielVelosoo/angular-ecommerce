@@ -4,12 +4,14 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { RouterModule } from '@angular/router';
 import {FooterComponent} from './components/footer/footer.component';
+import {SidebarCategoriasComponent} from './components/sidebar-categorias/sidebar-categorias.component';
 
 @NgModule({
   declarations: [
     LayoutComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarCategoriasComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import {FooterComponent} from './components/footer/footer.component';
   exports: [
     LayoutComponent,
     MenuComponent,
-    FooterComponent
+    FooterComponent,
+    SidebarCategoriasComponent
   ]
 })
 export class LayoutModule { }
