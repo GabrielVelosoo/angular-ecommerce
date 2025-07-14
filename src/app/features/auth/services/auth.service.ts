@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private oauthService: OAuthService
+    private oauthService: OAuthService,
   ) { }
 
   configureAuth() {
