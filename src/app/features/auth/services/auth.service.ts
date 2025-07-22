@@ -28,6 +28,8 @@ export class AuthService {
   }
 
   logout() {
+    this.oauthService.logoutUrl = environment.auth.logoutUrl;
+    this.oauthService.postLogoutRedirectUri = environment.auth.postLogoutRedirectUri;
     this.oauthService.logOut();
   }
 
