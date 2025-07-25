@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
+import {Cliente} from '../../../models/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,10 @@ export class UsuarioService {
   obterUsuarioPorId(id: number): Observable<any> {
     const url: string = this.apiUrl + `/${id}`;
     return this.http.get<Observable<any>>(`${url}`);
+  }
+
+  atualizarDadosUsuario(id: number, dadosAtualizados: Cliente): Observable<any> {
+    const url: string = this.apiUrl + `/${id}`;
+    return this.http.put(url, dadosAtualizados);
   }
 }

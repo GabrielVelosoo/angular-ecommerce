@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class MyAccountComponent implements OnInit {
 
   usuario: Cliente = new Cliente();
+  atualizaDados: boolean = false;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -47,5 +48,26 @@ export class MyAccountComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  salvaDadosAtualizados() {
+    this.usuarioService
+      .atualizarDadosUsuario(this.usuario.id, this.usuario)
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+  }
+
+  atualizarDadosUsuario() {
+    this.atualizaDados = true;
+  }
+
+  cancelaAtualizacao() {
+    this.atualizaDados = false;
   }
 }
