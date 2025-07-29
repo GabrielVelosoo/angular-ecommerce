@@ -56,6 +56,7 @@ export class MyAccountComponent implements OnInit {
       .subscribe({
         next: (response) => {
           console.log(response);
+          this.atualizaDados = false;
         },
         error: (error) => {
           console.log(error);
