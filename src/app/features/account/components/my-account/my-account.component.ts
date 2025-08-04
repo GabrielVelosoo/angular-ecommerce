@@ -51,17 +51,22 @@ export class MyAccountComponent implements OnInit {
   }
 
   salvaDadosAtualizados() {
+    this.usuario.cpf = this.limparCpfCnpj(this.usuario.cpf);
     this.usuarioService
       .atualizarDadosUsuario(this.usuario.id, this.usuario)
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
           this.atualizaDados = false;
+          this.ngOnInit();
         },
         error: (error) => {
           console.log(error);
         }
       });
+  }
+
+  limparCpfCnpj(valor: string): string {
+    return valor ? valor.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\D/g, '') : '';
   }
 
   atualizarDadosUsuario() {
@@ -70,5 +75,6 @@ export class MyAccountComponent implements OnInit {
 
   cancelaAtualizacao() {
     this.atualizaDados = false;
+    this.ngOnInit();
   }
 }
