@@ -1,0 +1,62 @@
+
+  <h2>MINHA CONTA</h2>
+
+  <div class="account-sections-horizontal">
+
+    <div class="account-section">
+      <h3>INFORMAÇÕES PESSOAIS</h3>
+      <div class="account-info">
+        <div *ngIf="!atualizaDados">
+          <div class="info-item">
+            <label>Nome e sobrenome</label>
+            <p>{{ usuario.nome }} {{ usuario.sobrenome }}</p>
+
+            <label>Informações pessoais</label>
+            <p>CPF ou CNPJ <strong>{{ usuario.cpf }}</strong></p>
+            <p>Data de nascimento <strong>{{ usuario.dataNascimento | date: 'dd/MM/yyyy' }}</strong></p>
+          </div>
+
+          <div class="edit-button-container">
+            <button class="edit-button" (click)="atualizarDadosUsuario()">✎ Modificar</button>
+          </div>
+        </div>
+
+        <form #formAtualizacao="ngForm" class="styled-form" *ngIf="atualizaDados" (ngSubmit)="salvaDadosAtualizados()">
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" [(ngModel)]="usuario.nome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="sobrenome">Sobrenome</label>
+            <input type="text" id="sobrenome" name="sobrenome" [(ngModel)]="usuario.sobrenome" required />
+          </div>
+
+          <div class="form-group">
+            <label for="cpf">*CPF or CNPJ</label>
+            <input type="text" id="cpf" name="cpf" [(ngModel)]="usuario.cpf" required />
+          </div>
+
+          <div class="form-group">
+            <label for="dataNascimento">Data de nascimento</label>
+            <input type="date" id="dataNascimento" name="dataNascimento" [(ngModel)]="usuario.dataNascimento" required />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" class="cancel-btn" (click)="cancelaAtualizacao()">CANCELAR</button>
+            <button type="submit" class="save-btn">SALVAR</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="account-section">
+      <h3>DADOS DE CONTATO</h3>
+      <div class="account-info">
+        <div class="info-item">
+          <label>Endereço de e-mail</label>
+          <p>{{ usuario.email }}</p>
+        </div>
+      </div>
+    </div>
+  </div>

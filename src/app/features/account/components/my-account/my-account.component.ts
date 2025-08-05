@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../../services/usuario.service';
-import { Cliente } from '../../../../models/Cliente';
+import { Component } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -10,71 +7,13 @@ import { Router } from '@angular/router';
   templateUrl: './my-account.component.html',
   styleUrl: './my-account.component.css'
 })
-export class MyAccountComponent implements OnInit {
-
-  usuario: Cliente = new Cliente();
-  atualizaDados: boolean = false;
+export class MyAccountComponent {
 
   constructor(
-    private usuarioService: UsuarioService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) { }
-
-  ngOnInit(): void {
-    this.usuarioService
-      .obterUsuarioLogado()
-      .subscribe({
-        next: (response) => {
-          this.usuario.id = response.id;
-          this.usuario.email = response.email;
-
-          this.usuarioService
-            .obterUsuarioPorId(this.usuario.id)
-            .subscribe({
-              next: (response) => {
-                this.usuario = response;
-              },
-              error: (error) => {
-                console.log(error);
-              }
-            });
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-  }
 
   logout() {
     this.authService.logout();
-  }
-
-  salvaDadosAtualizados() {
-    this.usuario.cpf = this.limparCpfCnpj(this.usuario.cpf);
-    this.usuarioService
-      .atualizarDadosUsuario(this.usuario.id, this.usuario)
-      .subscribe({
-        next: () => {
-          this.atualizaDados = false;
-          this.ngOnInit();
-        },
-        error: (error) => {
-          console.log(error);
-        }
-      });
-  }
-
-  limparCpfCnpj(valor: string): string {
-    return valor ? valor.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/\D/g, '') : '';
-  }
-
-  atualizarDadosUsuario() {
-    this.atualizaDados = true;
-  }
-
-  cancelaAtualizacao() {
-    this.atualizaDados = false;
-    this.ngOnInit();
   }
 }
