@@ -4,11 +4,11 @@ import { UsuarioService } from '../../services/usuario.service';
 
 @Component({
   standalone: false,
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  selector: 'app-perfil',
+  templateUrl: './perfil.component.html',
+  styleUrl: './perfil.component.css'
 })
-export class ProfileComponent implements OnInit {
+export class PerfilComponent implements OnInit {
 
   usuario: Cliente = new Cliente();
   atualizaDados: boolean = false;

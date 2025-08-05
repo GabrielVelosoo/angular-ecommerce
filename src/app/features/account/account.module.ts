@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AccountRoutingModule } from './account-routing.module';
 import { MyAccountComponent } from './components/my-account/my-account.component';
-import {FormsModule} from "@angular/forms";
-import {ProfileComponent} from './components/profile/profile.component';
+import { FormsModule } from "@angular/forms";
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { MudarSenhaComponent } from './components/mudar-senha/mudar-senha.component';
 
 @NgModule({
   declarations: [
     MyAccountComponent,
-    ProfileComponent
+    PerfilComponent,
+    MudarSenhaComponent
   ],
     imports: [
         CommonModule,
@@ -18,7 +20,8 @@ import {ProfileComponent} from './components/profile/profile.component';
     ],
   exports: [
     MyAccountComponent,
-    ProfileComponent
+    PerfilComponent,
+    MudarSenhaComponent
   ]
 })
 export class AccountModule { }

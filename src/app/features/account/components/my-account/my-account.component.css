@@ -32,6 +32,11 @@
   text-decoration: underline;
 }
 
+.account-menu a {
+  text-decoration: none;
+  color: #222;
+}
+
 .account-content {
   flex: 1;
 }
