@@ -1,5 +1,9 @@
-<form class="form-container" #form="ngForm">
+<form class="form-container" #form="ngForm" (ngSubmit)="alterarSenha()">
   <h2 class="form-title">MUDAR A SENHA</h2>
+
+  <div class="mensagem-sucesso" *ngIf="mensagemSucesso">
+    <p>Senha alterada com sucesso.</p>
+  </div>
 
   <div class="form-group">
     <input
@@ -7,7 +11,11 @@
       name="novaSenha"
       placeholder="Nova senha"
       required
+      [(ngModel)]="novaSenha"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'novaSenha'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -16,7 +24,11 @@
       name="confirmarSenha"
       placeholder="Confirme a nova senha"
       required
+      [(ngModel)]="confirmarSenha"
     />
+    <div class="mt-form" *ngIf="!verificarSenhasCoincidem() && confirmarSenha">
+      <p class="error-text">As senhas não coincidem.</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -25,12 +37,25 @@
       name="senhaAtual"
       placeholder="Senha Atual"
       required
+      [(ngModel)]="senhaAtual"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'senhaAtual'">{{ erro.mensagem }}</p>
+    </div>
+    <div class="mensagens-validacao" *ngIf="erros">
+      <p>{{ erros.mensagem }}</p>
+    </div>
     <div class="helper-text">Deve digitar sua senha atual para atualizar seu perfil.</div>
   </div>
 
   <div class="form-buttons">
-    <button type="button" class="btn cancel">CANCELAR</button>
-    <button type="submit" class="btn save">SALVAR AS ALTERAÇÕES</button>
+    <a routerLink="/my-account/profile" class="btn cancel">CANCELAR</a>
+    <button
+      type="submit"
+      class="btn save"
+      [disabled]="!verificarSenhasCoincidem()"
+    >
+      SALVAR AS ALTERAÇÕES
+    </button>
   </div>
 </form>

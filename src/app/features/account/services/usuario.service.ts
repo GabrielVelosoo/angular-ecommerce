@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import {Cliente} from '../../../models/Cliente';
+import { Cliente } from '../../../models/Cliente';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,14 @@ export class UsuarioService {
   atualizarDadosUsuario(id: number, dadosAtualizados: Cliente): Observable<any> {
     const url: string = this.apiUrl + `/${id}`;
     return this.http.put(url, dadosAtualizados);
+  }
+
+  alterarSenha(senhaAtual: string, novaSenha: string): Observable<any> {
+    const url: string = environment.apiBaseUrl + '/api/usuarios/alterar-senha';
+    const body = {
+      senhaAtual: senhaAtual,
+      novaSenha: novaSenha
+    }
+    return this.http.put(url, body);
   }
 }

@@ -22,6 +22,28 @@
   border-radius: 4px;
 }
 
+.mensagem-sucesso {
+  margin-bottom: 15px;
+}
+
+.mensagem-sucesso > p {
+  font-size: small;
+  color: green;
+}
+
+.mt-form {
+  margin-top: 15px;
+}
+
+.mensagens-validacao {
+  margin-top: 5px;
+}
+
+.mensagens-validacao > p {
+  font-size: small;
+  color: #2c3e50;
+}
+
 .form-group input::placeholder {
   color: #888;
 }
@@ -30,10 +52,10 @@
   border-color: red;
 }
 
-.error-message {
+.error-text {
   color: red;
-  font-size: 13px;
-  margin-top: 4px;
+  font-size: 0.9rem;
+  margin-top: -0.5rem;
 }
 
 .helper-text {
@@ -62,6 +84,7 @@
 .btn.cancel {
   background: white;
   color: black;
+  text-decoration: none;
 }
 
 .btn.cancel:hover {
