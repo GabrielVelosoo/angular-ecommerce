@@ -27,6 +27,9 @@ export class MudarSenhaComponent {
         next: () => {
           this.mensagemSucesso = true;
           this.erros = new Erro();
+          this.senhaAtual = '';
+          this.novaSenha = '';
+          this.confirmarSenha = '';
         },
         error: (error) => {
           this.erros = error.error;

@@ -3,11 +3,11 @@ import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
   standalone: false,
-  selector: 'app-my-account',
-  templateUrl: './my-account.component.html',
-  styleUrl: './my-account.component.css'
+  selector: 'app-minha-conta',
+  templateUrl: './minha-conta.component.html',
+  styleUrl: './minha-conta.component.css'
 })
-export class MyAccountComponent {
+export class MinhaContaComponent {
 
   constructor(
     private authService: AuthService

@@ -1,0 +1,60 @@
+.lista-endereco-container {
+  width: 100%;
+}
+
+.lista-endereco-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.endereco-principal-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.endereco-card {
+  background-color: #f2f2f2;
+  padding: 16px;
+  max-width: 300px;
+  margin-bottom: 24px;
+}
+
+.endereco-card p {
+  margin: 4px 0;
+}
+
+.endereco-acoes {
+  margin-top: 8px;
+}
+
+.acao-link {
+  font-weight: bold;
+  font-size: 14px;
+  color: #1a1a1a;
+  text-decoration: none;
+  margin-right: 8px;
+}
+
+.acao-link:hover {
+  text-decoration: underline;
+}
+
+.btn-add-endereco {
+  display: inline-block;
+  background-color: #1a1a1a;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add-endereco:hover {
+  background-color: #333;
+  cursor: pointer;
+}

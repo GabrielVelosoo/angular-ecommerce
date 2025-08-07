@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MyAccountComponent } from './components/my-account/my-account.component';
+import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
-import {MudarSenhaComponent} from './components/mudar-senha/mudar-senha.component';
+import { MudarSenhaComponent } from './components/mudar-senha/mudar-senha.component';
+import { ListaEnderecoComponent } from './components/endereco/lista-endereco/lista-endereco.component';
+import { AdicionarEnderecoComponent } from './components/endereco/adicionar-endereco/adicionar-endereco.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: MyAccountComponent,
+    component: MinhaContaComponent,
     children: [
       {
         path: '',
@@ -21,6 +23,14 @@ const routes: Routes = [
       {
         path: 'update-password',
         component: MudarSenhaComponent
+      },
+      {
+        path: 'address-book',
+        component: ListaEnderecoComponent
+      },
+      {
+        path: 'add-address',
+        component: AdicionarEnderecoComponent
       }
     ]
   }

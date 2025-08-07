@@ -1,7 +1,7 @@
 .layout-container {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f5f7fa;
   color: #333;
@@ -11,5 +11,4 @@
   flex-grow: 1;
   padding: 30px;
   margin-top: 20px;
-  overflow-y: auto;
 }

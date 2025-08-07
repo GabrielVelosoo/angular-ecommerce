@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterRequest } from '../../../models/auth/RegisterRequest';
 import { Observable } from 'rxjs';
-import { Cliente } from '../../../models/Cliente';
+import { Cliente } from '../../../models/usuario/Cliente';
 import { environment } from '../../../environments/environment';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { authConfig } from '../config/auth.config';

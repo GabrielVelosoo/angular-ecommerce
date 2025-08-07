@@ -1,0 +1,114 @@
+<form class="form-container" #form="ngForm" (ngSubmit)="salvarEndereco()">
+  <h2 class="form-title">ADICIONAR UM NOVO ENDEREÇO</h2>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="nome"
+      placeholder="Nome"
+      required
+      [(ngModel)]="endereco.nomeContato"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="sobrenome"
+      placeholder="Sobrenome"
+      required
+      [(ngModel)]="endereco.sobrenomeContato"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="telefone"
+      placeholder="Número de telefone"
+      required
+      [(ngModel)]="endereco.telefoneContato"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="cep"
+      placeholder="CEP"
+      required
+      [(ngModel)]="endereco.cep"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="endereco"
+      placeholder="Endereço"
+      required
+      [(ngModel)]="endereco.rua"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="numero"
+      placeholder="Número"
+      required
+      [(ngModel)]="endereco.numero"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="complemento"
+      placeholder="Complemento (Opcional)"
+      required
+      [(ngModel)]="endereco.complemento"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="bairro"
+      placeholder="Bairro"
+      required
+      [(ngModel)]="endereco.bairro"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="estado"
+      placeholder="Estado"
+      required
+      [(ngModel)]="endereco.estado"
+    />
+  </div>
+
+  <div class="form-group">
+    <input
+      type="text"
+      name="cidade"
+      placeholder="Cidade"
+      required
+      [(ngModel)]="endereco.cidade"
+    />
+  </div>
+
+  <div class="form-buttons">
+    <a routerLink="/my-account/address-book" class="btn cancel">CANCELAR</a>
+    <button
+      type="submit"
+      class="btn save"
+    >
+      SALVAR
+    </button>
+  </div>
+</form>
+

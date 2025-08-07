@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
-import { Cliente } from '../../../models/Cliente';
+import { Cliente } from '../../../models/usuario/Cliente';
+import { Endereco } from '../../../models/usuario/Endereco';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class UsuarioService {
   ) { }
 
   obterUsuarioLogado(): Observable<any> {
-    const url: string = this.apiUrl + '/me';
+    const url: string = environment.apiBaseUrl + '/api/usuarios/me';
     return this.http.get<Observable<any>>(`${url}`);
   }
 
@@ -37,5 +38,15 @@ export class UsuarioService {
       novaSenha: novaSenha
     }
     return this.http.put(url, body);
+  }
+
+  obterEnderecosUsuarioLogado(): Observable<Endereco> {
+    const url: string = environment.apiBaseUrl + '/api/enderecos';
+    return this.http.get<Endereco>(`${url}`);
+  }
+
+  salvarEndereco(endereco: Endereco): Observable<any> {
+    const url: string = environment.apiBaseUrl + '/api/enderecos';
+    return this.http.post<Observable<any>>(`${url}`, endereco);
   }
 }
