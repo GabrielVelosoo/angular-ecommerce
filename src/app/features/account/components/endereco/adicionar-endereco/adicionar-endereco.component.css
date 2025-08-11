@@ -27,6 +27,15 @@
   color: #888;
 }
 
+.mensagens-validacao {
+  margin-top: 10px;
+}
+
+.mensagens-validacao > p {
+  font-size: small;
+  color: #2c3e50;
+}
+
 .form-buttons {
   display: flex;
   justify-content: space-between;

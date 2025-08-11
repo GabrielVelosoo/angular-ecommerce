@@ -9,6 +9,9 @@
       required
       [(ngModel)]="endereco.nomeContato"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'nomeContato'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -19,6 +22,9 @@
       required
       [(ngModel)]="endereco.sobrenomeContato"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'sobrenomeContato'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -29,6 +35,9 @@
       required
       [(ngModel)]="endereco.telefoneContato"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'telefoneContato'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -39,6 +48,9 @@
       required
       [(ngModel)]="endereco.cep"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'cep'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -47,8 +59,11 @@
       name="endereco"
       placeholder="Endereço"
       required
-      [(ngModel)]="endereco.rua"
+      [(ngModel)]="endereco.endereco"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'endereco'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -59,6 +74,9 @@
       required
       [(ngModel)]="endereco.numero"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'numero'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -69,6 +87,9 @@
       required
       [(ngModel)]="endereco.complemento"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'complemento'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -79,6 +100,9 @@
       required
       [(ngModel)]="endereco.bairro"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'bairro'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -89,6 +113,9 @@
       required
       [(ngModel)]="endereco.estado"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'estado'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -99,6 +126,9 @@
       required
       [(ngModel)]="endereco.cidade"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'cidade'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-buttons">

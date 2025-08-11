@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
+import {Endereco} from '../../../../../models/usuario/Endereco';
 
 @Component({
   standalone: false,
@@ -8,6 +9,10 @@ import { UsuarioService } from '../../../services/usuario.service';
   styleUrl: './lista-endereco.component.css'
 })
 export class ListaEnderecoComponent implements OnInit {
+
+  enderecos: Endereco[] = [];
+  mostrarModal: boolean = false;
+  enderecoSelecionado?: Endereco;
 
   constructor(
     private usuarioService: UsuarioService
@@ -18,7 +23,32 @@ export class ListaEnderecoComponent implements OnInit {
       .obterEnderecosUsuarioLogado()
       .subscribe({
         next: (response) => {
-          console.log(response);
+          this.enderecos = response;
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+  }
+
+  abrirModal(endereco: Endereco) {
+    this.enderecoSelecionado = endereco;
+    this.mostrarModal = true;
+  }
+
+  fecharModal() {
+    this.mostrarModal = false;
+    this.enderecoSelecionado = undefined;
+  }
+
+  confirmaExclusao() {
+    if (!this.enderecoSelecionado) return;
+    this.usuarioService
+      .deletarEndereco(this.enderecoSelecionado.id)
+      .subscribe({
+        next: () => {
+          this.ngOnInit();
+          this.fecharModal();
         },
         error: (error) => {
           console.log(error);

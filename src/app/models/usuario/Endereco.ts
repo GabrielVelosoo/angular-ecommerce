@@ -3,7 +3,7 @@ export class Endereco {
   nomeContato: string = '';
   sobrenomeContato: string = '';
   telefoneContato: string = '';
-  rua: string = '';
+  endereco: string = '';
   numero: String = '';
   bairro: String = '';
   cidade: string = '';

@@ -40,13 +40,18 @@ export class UsuarioService {
     return this.http.put(url, body);
   }
 
-  obterEnderecosUsuarioLogado(): Observable<Endereco> {
+  obterEnderecosUsuarioLogado(): Observable<Endereco[]> {
     const url: string = environment.apiBaseUrl + '/api/enderecos';
-    return this.http.get<Endereco>(`${url}`);
+    return this.http.get<Endereco[]>(`${url}`);
   }
 
   salvarEndereco(endereco: Endereco): Observable<any> {
     const url: string = environment.apiBaseUrl + '/api/enderecos';
     return this.http.post<Observable<any>>(`${url}`, endereco);
+  }
+
+  deletarEndereco(enderecoId: number): Observable<any> {
+    const url: string = environment.apiBaseUrl + `/api/enderecos/${enderecoId}`;
+    return this.http.delete(url);
   }
 }

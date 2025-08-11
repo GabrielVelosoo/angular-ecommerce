@@ -1,21 +1,34 @@
 <div class="lista-endereco-container">
   <h2 class="lista-endereco-title">LISTA DE ENDEREÇOS</h2>
 
-  <h3 class="endereco-principal-title">ENDEREÇO PRINCIPAL</h3>
+  <h3 class="endereco-principal-title" *ngIf="enderecos.length > 0">ENDEREÇO PRINCIPAL</h3>
 
-  <div class="endereco-card">
-    <p><strong>Gabriel Veloso</strong></p>
-    <p>61984408209</p>
-    <p>Quadra 8 Conjunto F 18</p>
-    <p>Brasília, DF 72415-406</p>
+  <div class="endereco-card" *ngFor="let endereco of enderecos">
+    <p><strong>{{ endereco.nomeContato }} {{ endereco.sobrenomeContato }}</strong></p>
+    <p>{{ endereco.telefoneContato }}</p>
+    <p>{{ endereco.endereco }}</p>
+    <p>{{ endereco.cidade }}, {{ endereco.estado }} {{ endereco.cep }}</p>
     <p>Brasil</p>
     <div class="endereco-acoes">
       <a class="acao-link" href="#">Modificar</a>
-      <a class="acao-link" href="#">Deletar</a>
+      <a class="acao-link" (click)="abrirModal(endereco)">Deletar</a>
     </div>
   </div>
 
   <a routerLink="/my-account/add-address" class="btn-add-endereco">
     Adicionar um novo endereço <i class="fas fa-chevron-right"></i>
   </a>
+</div>
+
+<div class="modal" *ngIf="mostrarModal">
+  <div class="modal-conteudo">
+    <span class="modal-fechar" (click)="fecharModal()">&times;</span>
+    <h2>ELIMINAR ENDEREÇO</h2>
+    <p>Você está prestes a eliminar este endereço.<br>
+      Não será possível reverter a ação. Tem certeza?</p>
+    <div class="modal-botoes">
+      <button class="btn-voltar" (click)="fecharModal()">VOLTAR</button>
+      <button class="btn-confirmar" (click)="confirmaExclusao()">SIM, ELIMINE</button>
+    </div>
+  </div>
 </div>
