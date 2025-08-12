@@ -31,6 +31,10 @@ const routes: Routes = [
       {
         path: 'add-address',
         component: AdicionarEnderecoComponent
+      },
+      {
+        path: 'edit-address/:id',
+        component: AdicionarEnderecoComponent
       }
     ]
   }

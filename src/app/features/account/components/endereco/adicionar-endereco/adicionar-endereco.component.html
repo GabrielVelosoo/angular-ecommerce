@@ -1,5 +1,5 @@
 <form class="form-container" #form="ngForm" (ngSubmit)="salvarEndereco()">
-  <h2 class="form-title">ADICIONAR UM NOVO ENDEREÇO</h2>
+  <h2 class="form-title">{{ atualizando ? 'ATUALIZAR ENDEREÇO' : 'ADICIONAR UM NOVO ENDEREÇO' }}</h2>
 
   <div class="form-group">
     <input
@@ -47,6 +47,7 @@
       placeholder="CEP"
       required
       [(ngModel)]="endereco.cep"
+      (blur)="obterDadosEnderecoPorCep()"
     />
     <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
       <p *ngIf="erro.campo == 'cep'">{{ erro.mensagem }}</p>
@@ -60,6 +61,7 @@
       placeholder="Endereço"
       required
       [(ngModel)]="endereco.endereco"
+      [readonly]="camposBloqueados"
     />
     <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
       <p *ngIf="erro.campo == 'endereco'">{{ erro.mensagem }}</p>
@@ -99,6 +101,7 @@
       placeholder="Bairro"
       required
       [(ngModel)]="endereco.bairro"
+      [readonly]="camposBloqueados"
     />
     <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
       <p *ngIf="erro.campo == 'bairro'">{{ erro.mensagem }}</p>
@@ -112,6 +115,7 @@
       placeholder="Estado"
       required
       [(ngModel)]="endereco.estado"
+      [readonly]="camposBloqueados"
     />
     <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
       <p *ngIf="erro.campo == 'estado'">{{ erro.mensagem }}</p>
@@ -125,6 +129,7 @@
       placeholder="Cidade"
       required
       [(ngModel)]="endereco.cidade"
+      [readonly]="camposBloqueados"
     />
     <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
       <p *ngIf="erro.campo == 'cidade'">{{ erro.mensagem }}</p>
@@ -136,8 +141,17 @@
     <button
       type="submit"
       class="btn save"
+      *ngIf="!atualizando"
     >
       SALVAR
+    </button>
+    <button
+      type="button"
+      class="btn save"
+      *ngIf="atualizando"
+      (click)="atualizarEndereco()"
+    >
+      ATUALIZAR
     </button>
   </div>
 </form>

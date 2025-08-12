@@ -18,12 +18,12 @@ export class UsuarioService {
 
   obterUsuarioLogado(): Observable<any> {
     const url: string = environment.apiBaseUrl + '/api/usuarios/me';
-    return this.http.get<Observable<any>>(`${url}`);
+    return this.http.get(url);
   }
 
   obterUsuarioPorId(id: number): Observable<any> {
     const url: string = this.apiUrl + `/${id}`;
-    return this.http.get<Observable<any>>(`${url}`);
+    return this.http.get(url);
   }
 
   atualizarDadosUsuario(id: number, dadosAtualizados: Cliente): Observable<any> {
@@ -42,12 +42,22 @@ export class UsuarioService {
 
   obterEnderecosUsuarioLogado(): Observable<Endereco[]> {
     const url: string = environment.apiBaseUrl + '/api/enderecos';
-    return this.http.get<Endereco[]>(`${url}`);
+    return this.http.get<Endereco[]>(url);
+  }
+
+  obterDadosEnderecoPorCep(cep: string): Observable<any> {
+    const url: string = `https://viacep.com.br/ws/${cep}/json`;
+    return this.http.get(url);
   }
 
   salvarEndereco(endereco: Endereco): Observable<any> {
     const url: string = environment.apiBaseUrl + '/api/enderecos';
-    return this.http.post<Observable<any>>(`${url}`, endereco);
+    return this.http.post(url, endereco);
+  }
+
+  atualizarEndereco(id: number, endereco: Endereco):Observable<any> {
+    const url: string = environment.apiBaseUrl + `/api/enderecos/${id}`;
+    return this.http.put(url, endereco);
   }
 
   deletarEndereco(enderecoId: number): Observable<any> {

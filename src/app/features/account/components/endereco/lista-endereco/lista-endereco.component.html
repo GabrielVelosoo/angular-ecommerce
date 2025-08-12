@@ -6,16 +6,29 @@
   <div class="endereco-card" *ngFor="let endereco of enderecos">
     <p><strong>{{ endereco.nomeContato }} {{ endereco.sobrenomeContato }}</strong></p>
     <p>{{ endereco.telefoneContato }}</p>
-    <p>{{ endereco.endereco }}</p>
+    <p>{{ endereco.endereco }} {{ endereco.numero }}</p>
     <p>{{ endereco.cidade }}, {{ endereco.estado }} {{ endereco.cep }}</p>
     <p>Brasil</p>
     <div class="endereco-acoes">
-      <a class="acao-link" href="#">Modificar</a>
-      <a class="acao-link" (click)="abrirModal(endereco)">Deletar</a>
+      <a
+        class="acao-link"
+        [routerLink]="['/my-account/edit-address', endereco.id]"
+      >
+        Modificar
+      </a>
+      <a
+        class="acao-link"
+        (click)="abrirModal(endereco)"
+      >
+        Deletar
+      </a>
     </div>
   </div>
 
-  <a routerLink="/my-account/add-address" class="btn-add-endereco">
+  <a
+    routerLink="/my-account/add-address"
+    class="btn-add-endereco"
+  >
     Adicionar um novo endereço <i class="fas fa-chevron-right"></i>
   </a>
 </div>

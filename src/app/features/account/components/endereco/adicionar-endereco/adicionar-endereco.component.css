@@ -27,6 +27,12 @@
   color: #888;
 }
 
+input[readonly] {
+  background-color: #e0e0e0;
+  color: #555;
+  cursor: not-allowed;
+}
+
 .mensagens-validacao {
   margin-top: 10px;
 }
