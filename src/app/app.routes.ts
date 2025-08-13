@@ -22,6 +22,11 @@ export const routes: Routes = [
           .then(m => m.AccountModule)
       },
       {
+        path: 'category',
+        loadChildren: () => import('./features/produtos/produtos.module')
+          .then(m => m.ProdutosModule)
+      },
+      {
         path: '',
         redirectTo: '/home',
         pathMatch: 'full'

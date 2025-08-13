@@ -6,16 +6,20 @@ import { MinhaContaComponent } from './components/minha-conta/minha-conta.compon
 import { FormsModule } from "@angular/forms";
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MudarSenhaComponent } from './components/mudar-senha/mudar-senha.component';
-import {ListaEnderecoComponent} from './components/endereco/lista-endereco/lista-endereco.component';
-import {AdicionarEnderecoComponent} from './components/endereco/adicionar-endereco/adicionar-endereco.component';
+import { ListaEnderecosComponent } from './components/endereco/lista-enderecos/lista-enderecos.component';
+import { AdicionarEnderecoComponent } from './components/endereco/adicionar-endereco/adicionar-endereco.component';
+import { DadosPagamentoComponent } from './components/dados-pagamento/dados-pagamento.component';
+import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 
 @NgModule({
   declarations: [
     MinhaContaComponent,
     PerfilComponent,
     MudarSenhaComponent,
-    ListaEnderecoComponent,
-    AdicionarEnderecoComponent
+    ListaEnderecosComponent,
+    AdicionarEnderecoComponent,
+    DadosPagamentoComponent,
+    HistoricoPedidosComponent
   ],
     imports: [
         CommonModule,
@@ -26,8 +30,10 @@ import {AdicionarEnderecoComponent} from './components/endereco/adicionar-endere
     MinhaContaComponent,
     PerfilComponent,
     MudarSenhaComponent,
-    ListaEnderecoComponent,
-    AdicionarEnderecoComponent
+    ListaEnderecosComponent,
+    AdicionarEnderecoComponent,
+    DadosPagamentoComponent,
+    HistoricoPedidosComponent
   ]
 })
 export class AccountModule { }

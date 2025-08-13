@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Categoria } from '../../../models/Categoria';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -15,7 +16,16 @@ export class SidebarCategoriasComponent {
   @Output()
   fechar = new EventEmitter<void>();
 
+  constructor(
+    private router: Router
+  ) { }
+
   onFechar() {
     this.fechar.emit();
+  }
+
+  abrirSubcategoria(subcategoria: Categoria) {
+    if(!this.categoriaSelecionada) return;
+    this.router.navigate([`/category/${this.categoriaSelecionada.slug}/${subcategoria.slug}`]).then();
   }
 }

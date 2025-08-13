@@ -3,8 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MinhaContaComponent } from './components/minha-conta/minha-conta.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { MudarSenhaComponent } from './components/mudar-senha/mudar-senha.component';
-import { ListaEnderecoComponent } from './components/endereco/lista-endereco/lista-endereco.component';
+import { ListaEnderecosComponent } from './components/endereco/lista-enderecos/lista-enderecos.component';
 import { AdicionarEnderecoComponent } from './components/endereco/adicionar-endereco/adicionar-endereco.component';
+import { DadosPagamentoComponent } from './components/dados-pagamento/dados-pagamento.component';
+import { HistoricoPedidosComponent } from './components/historico-pedidos/historico-pedidos.component';
 
 const routes: Routes = [
   {
@@ -26,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'address-book',
-        component: ListaEnderecoComponent
+        component: ListaEnderecosComponent
       },
       {
         path: 'add-address',
@@ -35,6 +37,14 @@ const routes: Routes = [
       {
         path: 'edit-address/:id',
         component: AdicionarEnderecoComponent
+      },
+      {
+        path: 'payment-details',
+        component: DadosPagamentoComponent
+      },
+      {
+        path: 'orders',
+        component: HistoricoPedidosComponent
       }
     ]
   }

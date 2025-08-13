@@ -5,7 +5,10 @@
   <h2 class="titulo">{{ categoriaSelecionada?.nome }}</h2>
 
   <ul class="lista-subcategorias">
-    <li *ngFor="let sub of categoriaSelecionada?.subcategorias">
+    <li
+      *ngFor="let sub of categoriaSelecionada?.subcategorias"
+      (click)="abrirSubcategoria(sub)"
+    >
       {{ sub.nome }}
     </li>
   </ul>

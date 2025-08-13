@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
-import {Endereco} from '../../../../../models/usuario/Endereco';
+import { Endereco } from '../../../../../models/usuario/Endereco';
 
 @Component({
   standalone: false,
-  selector: 'app-lista-endereco',
-  templateUrl: './lista-endereco.component.html',
-  styleUrl: './lista-endereco.component.css'
+  selector: 'app-lista-enderecos',
+  templateUrl: './lista-enderecos.component.html',
+  styleUrl: './lista-enderecos.component.css'
 })
-export class ListaEnderecoComponent implements OnInit {
+export class ListaEnderecosComponent implements OnInit {
 
   enderecos: Endereco[] = [];
   mostrarModal: boolean = false;

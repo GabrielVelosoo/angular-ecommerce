@@ -1,0 +1,15 @@
+.historico-pedidos-container {
+  width: 100%;
+}
+
+.historico-pedidos-title {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 24px;
+}
+
+.historico-pedidos-content > p {
+  font-size: 17px;
+  color: #333;
+  margin-top: 20px;
+}

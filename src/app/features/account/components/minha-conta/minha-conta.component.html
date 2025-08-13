@@ -11,9 +11,17 @@
       <li>
         <a routerLink="address-book">Lista de endereços</a>
       </li>
-      <li>Dados de pagamento</li>
-      <li>Histórico de pedidos</li>
-      <li (click)="logout()"><strong>Sair da sessão</strong></li>
+      <li>
+        <a routerLink="payment-details">Dados de pagamento</a>
+      </li>
+      <li>
+        <a routerLink="orders">Histórico de pedidos</a>
+      </li>
+      <li
+        (click)="logout()"
+      >
+        <strong>Sair da sessão</strong>
+      </li>
     </ul>
   </div>
   <div class="account-content">
