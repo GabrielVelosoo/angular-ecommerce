@@ -55,6 +55,11 @@ export class UsuarioService {
     return this.http.post(url, endereco);
   }
 
+  obterEnderecoPorId(enderecoId: number): Observable<Endereco> {
+    const url: string = environment.apiBaseUrl + `/api/enderecos/${enderecoId}`;
+    return this.http.get<Endereco>(url);
+  }
+
   atualizarEndereco(id: number, endereco: Endereco):Observable<any> {
     const url: string = environment.apiBaseUrl + `/api/enderecos/${id}`;
     return this.http.put(url, endereco);

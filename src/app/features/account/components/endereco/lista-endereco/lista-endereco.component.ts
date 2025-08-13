@@ -42,7 +42,7 @@ export class ListaEnderecoComponent implements OnInit {
   }
 
   confirmaExclusao() {
-    if (!this.enderecoSelecionado) return;
+    if(!this.enderecoSelecionado) return;
     this.usuarioService
       .deletarEndereco(this.enderecoSelecionado.id)
       .subscribe({

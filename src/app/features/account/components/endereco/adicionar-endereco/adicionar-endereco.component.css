@@ -27,6 +27,19 @@
   color: #888;
 }
 
+.form-group select {
+  width: 100%;
+  padding: 16px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  color: #888;
+}
+
+.form-group select:valid {
+  color: #000;
+}
+
 input[readonly] {
   background-color: #e0e0e0;
   color: #555;

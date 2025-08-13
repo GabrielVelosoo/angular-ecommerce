@@ -4,6 +4,7 @@ import { Endereco } from '../../../../../models/usuario/Endereco';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Erro } from '../../../../../models/Erro';
 import { Cliente } from '../../../../../models/usuario/Cliente';
+import { ESTADOS_BRASIL } from '../../../../../shared/constants/estados';
 
 @Component({
   standalone: false,
@@ -18,6 +19,7 @@ export class AdicionarEnderecoComponent implements OnInit {
   camposBloqueados: boolean = false;
   usuario: Cliente = new Cliente();
   atualizando: boolean = false;
+  estados = ESTADOS_BRASIL;
 
   constructor(
     private usuarioService: UsuarioService,
@@ -30,6 +32,16 @@ export class AdicionarEnderecoComponent implements OnInit {
 
     if(this.endereco.id) {
       this.atualizando = true;
+      this.usuarioService
+        .obterEnderecoPorId(this.endereco.id)
+        .subscribe({
+          next: (response) => {
+            this.endereco = response;
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
     }
 
     this.usuarioService
@@ -58,18 +70,19 @@ export class AdicionarEnderecoComponent implements OnInit {
   }
 
   obterDadosEnderecoPorCep() {
-    if(!this.endereco.cep || this.endereco.cep.length !== 8) {
+    const cepLimpo = this.limparCep();
+    if(!cepLimpo || cepLimpo.length !== 8) {
       this.camposBloqueados = false;
       return;
     }
     this.usuarioService
-      .obterDadosEnderecoPorCep(this.endereco.cep)
+      .obterDadosEnderecoPorCep(cepLimpo)
       .subscribe({
         next: (response) => {
           if(!response.erro) {
             this.endereco.endereco = response.logradouro;
             this.endereco.bairro = response.bairro;
-            this.endereco.estado = response.estado;
+            this.endereco.estado = response.uf;
             this.endereco.cidade = response.localidade;
             this.camposBloqueados = true;
           } else {
@@ -84,6 +97,7 @@ export class AdicionarEnderecoComponent implements OnInit {
   }
 
   salvarEndereco() {
+    this.endereco.cep = this.limparCep();
     this.usuarioService
       .salvarEndereco(this.endereco)
       .subscribe({
@@ -97,15 +111,29 @@ export class AdicionarEnderecoComponent implements OnInit {
   }
 
   atualizarEndereco() {
+    this.endereco.cep = this.limparCep();
     this.usuarioService
       .atualizarEndereco(this.endereco.id, this.endereco)
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
+          this.router.navigate(['/my-account/address-book']).then();
         },
         error: (error) => {
           console.log(error);
         }
       });
+  }
+
+  limparCep(): string {
+    return this.endereco.cep.replace(/\D/g, '');
+  }
+
+  formatarCep() {
+    const cepNumeros = this.limparCep();
+    if(cepNumeros.length > 5) {
+      this.endereco.cep = cepNumeros.substring(0, 5) + '-' + cepNumeros.substring(5, 8);
+    } else {
+      this.endereco.cep = cepNumeros;
+    }
   }
 }
