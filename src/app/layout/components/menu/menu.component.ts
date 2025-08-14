@@ -3,7 +3,7 @@ import { AuthService } from '../../../features/auth/services/auth.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
 import { CategoriaService } from '../../../features/home/services/categoria.service';
-import { Categoria } from '../../../models/Categoria';
+import { Categoria } from '../../../models/produto/Categoria';
 
 @Component({
   standalone: false,

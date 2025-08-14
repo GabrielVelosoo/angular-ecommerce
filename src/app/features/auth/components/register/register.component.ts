@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LoginRequest } from '../../../../models/auth/LoginRequest';
 import { RegisterRequest } from '../../../../models/auth/RegisterRequest';
 import { AuthService } from '../../services/auth.service';
-import { Erro } from '../../../../models/Erro';
+import { Erro } from '../../../../models/erro/Erro';
 
 @Component({
   standalone: false,

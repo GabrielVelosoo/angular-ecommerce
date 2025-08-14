@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Endereco } from '../../../../../models/usuario/Endereco';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Erro } from '../../../../../models/Erro';
+import { Erro } from '../../../../../models/erro/Erro';
 import { Cliente } from '../../../../../models/usuario/Cliente';
 import { ESTADOS_BRASIL } from '../../../../../shared/constants/estados';
 

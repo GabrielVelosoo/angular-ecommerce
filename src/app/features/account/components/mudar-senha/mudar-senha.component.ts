@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
-import { Erro } from '../../../../models/Erro';
+import { Erro } from '../../../../models/erro/Erro';
 
 @Component({
   standalone: false,

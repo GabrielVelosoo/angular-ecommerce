@@ -1,1 +1,24 @@
-<p>lista-produtos works!</p>
+<div class="lista-produtos-container">
+  <h1 class="categoria-titulo">{{ categoria.nome }}</h1>
+
+  <div class="filtros">
+    <label>
+      Ordenar por:
+      <select>
+        <option value="preco-asc">Preço: Menor para Maior</option>
+        <option value="preco-desc">Preço: Maior para Menor</option>
+        <option value="nome-asc">Nome: A-Z</option>
+        <option value="nome-desc">Nome: Z-A</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="grid-produtos">
+    <div class="produto-card" *ngFor="let produto of produtos">
+      <img class="produto-imagem" [src]="'http://localhost:8080' + produto.imagemUrl" alt="{{ produto.nome }}" />
+      <h2 class="produto-nome">{{ produto.nome }}</h2>
+      <p class="produto-preco">R$ {{ produto.preco | number:'1.2-2' }}</p>
+      <button class="btn-comprar">Comprar</button>
+    </div>
+  </div>
+</div>

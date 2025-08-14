@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { ProdutosRoutingModule } from './produtos-routing.module';
 import { ListaProdutosComponent } from './components/lista-produtos/lista-produtos.component';
@@ -11,7 +11,8 @@ import { ListaProdutosComponent } from './components/lista-produtos/lista-produt
   ],
   imports: [
     CommonModule,
-    ProdutosRoutingModule
+    ProdutosRoutingModule,
+    NgOptimizedImage
   ],
   exports: [
     ListaProdutosComponent
