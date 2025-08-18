@@ -16,6 +16,18 @@
     <a class="fa-solid fa-heart"></a>
     <a (click)="navegarUsuario()" class="fa-solid fa-user"></a>
     <a class="fa-solid fa-cart-shopping"></a>
+
+    <div class="admin-menu" *ngIf="hasRoleAdmin()">
+      <input type="checkbox" id="hamburguer-toggle" />
+      <label for="hamburguer-toggle" class="hamburguer-icon">
+        <i class="fa-solid fa-bars"></i>
+      </label>
+
+      <div class="admin-dropdown">
+        <a routerLink="/admin/products">Produtos</a>
+      </div>
+    </div>
+
   </div>
 </header>
 

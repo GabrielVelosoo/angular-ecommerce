@@ -98,3 +98,61 @@
     font-size: 1.3rem;
   }
 }
+
+.admin-menu {
+  position: relative;
+  margin-left: 15px;
+}
+
+.hamburguer-icon {
+  font-size: 1.4rem;
+  color: #ecf0f1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hamburguer-icon:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+#hamburguer-toggle {
+  display: none;
+}
+
+.admin-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 25px;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  border-radius: 4px;
+  min-width: 150px;
+  z-index: 1000;
+}
+
+.admin-dropdown a {
+  display: block;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.admin-dropdown a:hover {
+  background: #f0f0f0;
+}
+
+#hamburguer-toggle:checked + .hamburguer-icon + .admin-dropdown {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+}

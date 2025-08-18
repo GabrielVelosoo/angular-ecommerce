@@ -54,4 +54,8 @@ export class MenuComponent implements OnInit {
     this.menuAberto = false;
     this.categoriaSelecionada = null;
   }
+
+  hasRoleAdmin(): boolean {
+    return this.authService.hasRole('ADMIN');
+  }
 }

@@ -1,0 +1,83 @@
+<form class="form-container" #form="ngForm">
+  <h2 class="form-title">ADICIONAR PRODUTO</h2>
+
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input
+      id="nome"
+      type="text"
+      name="nome"
+      placeholder="Nome"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="descricao">Descrição</label>
+    <textarea
+      id="descricao"
+      type="text"
+      name="descricao"
+      placeholder="Descrição"
+      required
+    ></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="preco">Preço</label>
+    <input
+      id="preco"
+      type="number"
+      name="preco"
+      placeholder="Preço"
+      step="0.01"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="quantidadeEstoque">Quantidade em estoque</label>
+    <input
+      id="quantidadeEstoque"
+      type="number"
+      name="quantidadeEstoque"
+      placeholder="Quantidade em estoque"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="imagem">Imagem do produto</label>
+    <input
+      id="imagem"
+      type="file"
+      name="imagem"
+      placeholder="Imagem"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="categoria">Categoria</label>
+    <select
+      id="categoria"
+      name="categoria"
+      required
+    >
+      <option value="">Selecione uma categoria</option>
+      <option>
+        categoria
+      </option>
+    </select>
+  </div>
+
+  <div class="form-buttons">
+    <a routerLink="/admin/products" class="btn cancel">CANCELAR</a>
+    <button
+      type="submit"
+      class="btn save"
+    >
+      SALVAR
+    </button>
+  </div>
+</form>
