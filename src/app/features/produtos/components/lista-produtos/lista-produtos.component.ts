@@ -35,7 +35,6 @@ export class ListaProdutosComponent implements OnInit {
       )
       .subscribe({
         next: (produtos: Produto[]) => {
-          console.log(produtos);
           this.produtos = produtos;
         },
         error: (error) => {
