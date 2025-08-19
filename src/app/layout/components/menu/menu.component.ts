@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../features/auth/services/auth.service';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { Router } from '@angular/router';
-import { CategoriaService } from '../../../features/home/services/categoria.service';
+import { CategoriaService } from '../../../shared/services/categoria.service';
 import { Categoria } from '../../../models/produto/Categoria';
 
 @Component({

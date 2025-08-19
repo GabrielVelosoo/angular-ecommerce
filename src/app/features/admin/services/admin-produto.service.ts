@@ -1,0 +1,35 @@
+import { Injectable } from '@angular/core';
+import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Produto } from '../../../models/produto/Produto';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AdminProdutoService {
+
+  apiUrl: string = environment.apiBaseUrl + '/api/produtos';
+
+  constructor(
+    private http: HttpClient
+  ) { }
+
+  salvarProduto(produto: Produto, imagem: File, categoriaFinalId?: number): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('nome', produto.nome);
+    formData.append('descricao', produto.descricao);
+    formData.append('preco', produto.preco.toString());
+    formData.append('quantidadeEstoque', produto.quantidadeEstoque.toString());
+
+    if(imagem) {
+      formData.append('imagem', imagem);
+    }
+
+    if(categoriaFinalId) {
+      formData.append('categoriaId', categoriaFinalId.toString())
+    }
+
+    return this.http.post(this.apiUrl, formData);
+  }
+}

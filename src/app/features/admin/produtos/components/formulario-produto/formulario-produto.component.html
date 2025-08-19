@@ -1,4 +1,4 @@
-<form class="form-container" #form="ngForm">
+<form class="form-container" #form="ngForm" (submit)="salvarProduto()">
   <h2 class="form-title">ADICIONAR PRODUTO</h2>
 
   <div class="form-group">
@@ -9,6 +9,7 @@
       name="nome"
       placeholder="Nome"
       required
+      [(ngModel)]="produto.nome"
     />
   </div>
 
@@ -20,6 +21,7 @@
       name="descricao"
       placeholder="Descrição"
       required
+      [(ngModel)]="produto.descricao"
     ></textarea>
   </div>
 
@@ -32,6 +34,7 @@
       placeholder="Preço"
       step="0.01"
       required
+      [(ngModel)]="produto.preco"
     />
   </div>
 
@@ -43,6 +46,7 @@
       name="quantidadeEstoque"
       placeholder="Quantidade em estoque"
       required
+      [(ngModel)]="produto.quantidadeEstoque"
     />
   </div>
 
@@ -54,6 +58,7 @@
       name="imagem"
       placeholder="Imagem"
       required
+      (change)="onFileSelected($event)"
     />
   </div>
 
@@ -63,10 +68,26 @@
       id="categoria"
       name="categoria"
       required
+      [(ngModel)]="categoriaSelecionadaId"
+      (ngModelChange)="onSelectCategoriaPai($event)"
     >
       <option value="">Selecione uma categoria</option>
-      <option>
-        categoria
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">
+        {{ categoria.nome }}
+      </option>
+    </select>
+  </div>
+
+  <div class="form-group" *ngIf="subcategorias.length">
+    <label for="subcategoria">Subcategoria</label>
+    <select
+      id="subcategoria"
+      name="subcategoria"
+      [(ngModel)]="subcategoriaSelecionadaId"
+    >
+      <option value="">Selecione uma subcategoria</option>
+      <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.id">
+        {{ subcategoria.nome }}
       </option>
     </select>
   </div>
