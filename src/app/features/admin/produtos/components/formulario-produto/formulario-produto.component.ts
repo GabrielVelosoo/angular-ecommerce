@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CategoriaService } from '../../../../../shared/services/categoria.service';
 import { Categoria } from '../../../../../models/produto/Categoria';
 import { Produto } from '../../../../../models/produto/Produto';
-import {AdminProdutoService} from '../../../services/admin-produto.service';
+import { AdminProdutoService } from '../../../services/admin-produto.service';
 
 @Component({
   standalone: false,
@@ -12,13 +12,11 @@ import {AdminProdutoService} from '../../../services/admin-produto.service';
 })
 export class FormularioProdutoComponent implements OnInit {
 
-  produto: Produto = new Produto();
+  produto: Produto = new Produto;
   categorias: Categoria[] = [];
   subcategorias: Categoria[] = [];
   categoriaSelecionadaId?: number;
   subcategoriaSelecionadaId?: number;
-
-  imagemArquivo!: File;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -44,13 +42,13 @@ export class FormularioProdutoComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.imagemArquivo = event.target.files[0];
+    this.produto.imagem = event.target.files[0];
   }
 
   salvarProduto() {
     const categoriaFinalId = this.subcategoriaSelecionadaId || this.categoriaSelecionadaId;
     this.adminProdutoService
-      .salvarProduto(this.produto, this.imagemArquivo, categoriaFinalId)
+      .salvarProduto(this.produto, this.produto.imagem, categoriaFinalId)
       .subscribe({
         next: (response) => {
           console.log(response);
