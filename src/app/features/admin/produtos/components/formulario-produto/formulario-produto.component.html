@@ -11,6 +11,9 @@
       required
       [(ngModel)]="produto.nome"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'nome'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -23,6 +26,9 @@
       required
       [(ngModel)]="produto.descricao"
     ></textarea>
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'descricao'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -32,10 +38,12 @@
       type="number"
       name="preco"
       placeholder="Preço"
-      step="0.01"
       required
       [(ngModel)]="produto.preco"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'preco'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -48,6 +56,9 @@
       required
       [(ngModel)]="produto.quantidadeEstoque"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'quantidadeEstoque'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -58,8 +69,12 @@
       name="imagem"
       placeholder="Imagem"
       required
+      #inputImagem
       (change)="onFileSelected($event)"
     />
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'imagem'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group">
@@ -71,11 +86,14 @@
       [(ngModel)]="categoriaSelecionadaId"
       (ngModelChange)="onSelectCategoriaPai($event)"
     >
-      <option value="">Selecione uma categoria</option>
+      <option [ngValue]="null" disabled selected>Selecione uma categoria</option>
       <option *ngFor="let categoria of categorias" [value]="categoria.id">
         {{ categoria.nome }}
       </option>
     </select>
+    <div class="mensagens-validacao" *ngFor="let erro of erros.erros">
+      <p *ngIf="erro.campo == 'categoriaId'">{{ erro.mensagem }}</p>
+    </div>
   </div>
 
   <div class="form-group" *ngIf="subcategorias.length">
@@ -85,11 +103,15 @@
       name="subcategoria"
       [(ngModel)]="subcategoriaSelecionadaId"
     >
-      <option value="">Selecione uma subcategoria</option>
+      <option [ngValue]="null" disabled selected>Selecione uma subcategoria</option>
       <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.id">
         {{ subcategoria.nome }}
       </option>
     </select>
+  </div>
+
+  <div *ngIf="mensagemSucesso" class="mensagem-sucesso">
+    Produto salvo com sucesso!
   </div>
 
   <div class="form-buttons">

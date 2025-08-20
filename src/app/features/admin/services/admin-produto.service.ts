@@ -15,7 +15,7 @@ export class AdminProdutoService {
     private http: HttpClient
   ) { }
 
-  salvarProduto(produto: Produto, imagem: File, categoriaFinalId?: number): Observable<any> {
+  salvarProduto(produto: Produto, imagem: File, categoriaFinalId: number | null): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('nome', produto.nome);
     formData.append('descricao', produto.descricao);

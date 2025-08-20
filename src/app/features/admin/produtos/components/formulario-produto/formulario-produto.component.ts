@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CategoriaService } from '../../../../../shared/services/categoria.service';
 import { Categoria } from '../../../../../models/produto/Categoria';
 import { Produto } from '../../../../../models/produto/Produto';
 import { AdminProdutoService } from '../../../services/admin-produto.service';
+import { Erro } from '../../../../../models/erro/Erro';
 
 @Component({
   standalone: false,
@@ -12,11 +13,16 @@ import { AdminProdutoService } from '../../../services/admin-produto.service';
 })
 export class FormularioProdutoComponent implements OnInit {
 
+  @ViewChild('inputImagem')
+  inputImagem!: ElementRef;
+
   produto: Produto = new Produto;
   categorias: Categoria[] = [];
   subcategorias: Categoria[] = [];
-  categoriaSelecionadaId?: number;
-  subcategoriaSelecionadaId?: number;
+  categoriaSelecionadaId: number | null = null;
+  subcategoriaSelecionadaId: number | null = null;
+  erros: Erro = new Erro();
+  mensagemSucesso: boolean = false;
 
   constructor(
     private categoriaService: CategoriaService,
@@ -50,11 +56,16 @@ export class FormularioProdutoComponent implements OnInit {
     this.adminProdutoService
       .salvarProduto(this.produto, this.produto.imagem, categoriaFinalId)
       .subscribe({
-        next: (response) => {
-          console.log(response);
+        next: () => {
+          this.produto = new Produto();
+          this.inputImagem.nativeElement.value = '';
+          this.categoriaSelecionadaId = null;
+          this.subcategoriaSelecionadaId = null;
+          this.erros = new Erro();
+          this.mensagemSucesso = true;
         },
         error: (error) => {
-          console.log(error);
+          this.erros = error.error;
         }
       });
   }
