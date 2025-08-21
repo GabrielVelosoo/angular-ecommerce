@@ -63,9 +63,12 @@ export class FormularioProdutoComponent implements OnInit {
           this.subcategoriaSelecionadaId = null;
           this.erros = new Erro();
           this.mensagemSucesso = true;
+          this.subcategorias = [];
         },
         error: (error) => {
           this.erros = error.error;
+          this.mensagemSucesso = false
+          this.subcategorias = [];
         }
       });
   }
