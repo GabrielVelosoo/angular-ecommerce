@@ -32,4 +32,18 @@ export class AdminProdutoService {
 
     return this.http.post(this.apiUrl, formData);
   }
+
+  obterProdutos(nome?: string, pagina?: number, tamanhoPagina?: number): Observable<any> {
+    let params: any = {};
+    if(nome !== undefined && nome !== null) {
+      params['nome'] = nome;
+    }
+    if(pagina !== undefined && pagina !== null) {
+      params['pagina'] = pagina;
+    }
+    if(tamanhoPagina !== undefined && tamanhoPagina !== null) {
+      params['tamanho-pagina'] = tamanhoPagina;
+    }
+    return this.http.get(this.apiUrl, { params });
+  }
 }

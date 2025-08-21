@@ -8,10 +8,10 @@ import { Produto } from '../../../../models/produto/Produto';
 @Component({
   standalone: false,
   selector: 'app-lista-produtos',
-  templateUrl: './lista-produtos.component.html',
-  styleUrl: './lista-produtos.component.css'
+  templateUrl: './lista-produtos-por-categoria.component.html',
+  styleUrl: './lista-produtos-por-categoria.component.css'
 })
-export class ListaProdutosComponent implements OnInit {
+export class ListaProdutosPorCategoriaComponent implements OnInit {
 
   categoria: Categoria = new Categoria();
   produtos: Produto[] = [];

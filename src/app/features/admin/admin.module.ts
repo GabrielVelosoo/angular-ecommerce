@@ -5,11 +5,13 @@ import { AdminRoutingModule } from './admin-routing.module';
 import { FormularioProdutoComponent } from './produtos/components/formulario-produto/formulario-produto.component';
 import { GerenciarProdutosComponent } from './produtos/components/gerenciar-produtos/gerenciar-produtos.component';
 import { FormsModule } from '@angular/forms';
+import { ListaProdutosComponent } from './produtos/components/lista-produtos/lista-produtos.component';
 
 @NgModule({
   declarations: [
     FormularioProdutoComponent,
-    GerenciarProdutosComponent
+    GerenciarProdutosComponent,
+    ListaProdutosComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +20,8 @@ import { FormsModule } from '@angular/forms';
   ],
   exports: [
     FormularioProdutoComponent,
-    GerenciarProdutosComponent
+    GerenciarProdutosComponent,
+    ListaProdutosComponent
   ]
 })
 export class AdminModule { }
