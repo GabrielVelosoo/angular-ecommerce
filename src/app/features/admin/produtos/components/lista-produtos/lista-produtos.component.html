@@ -1,25 +1,41 @@
-<table class="product-table">
-  <thead>
-  <tr>
-    <th>Imagem</th>
-    <th>Nome</th>
-    <th>Categoria</th>
-    <th>Preço</th>
-    <th>Ações</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let produto of produtos">
-    <td>
-      <img [src]="'http://localhost:8080' + produto.imagemUrl" alt="{{ produto.nome }}" class="product-img" />
-    </td>
-    <td>{{ produto.nome }}</td>
-    <td>{{ produto.categoria?.nome }}</td>
-    <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
-    <td>
-      <button class="btn edit-btn">Editar</button>
-      <button class="btn delete-btn">Excluir</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<div class="product-list-container">
+  <h1 class="produtos-titulo">PRODUTOS</h1>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Pesquisar produto..."
+      [formControl]="searchControl"
+      (keyup.enter)="buscarProduto(searchControl.value || '')"
+    />
+  </div>
+
+
+  <table class="product-table">
+    <thead>
+    <tr>
+      <th>Imagem</th>
+      <th>Nome</th>
+      <th>Categoria</th>
+      <th>Preço</th>
+      <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let produto of produtos">
+      <td>
+        <img [src]="'http://localhost:8080' + produto.imagemUrl" alt="{{ produto.nome }}" class="product-img" />
+      </td>
+      <td>{{ produto.nome }}</td>
+      <td>{{ produto.categoria?.nome }}</td>
+      <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
+      <td>
+        <button class="btn edit-btn">Editar</button>
+        <button class="btn delete-btn">Excluir</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+</div>

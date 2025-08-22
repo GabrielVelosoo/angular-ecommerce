@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { FormularioProdutoComponent } from './produtos/components/formulario-produto/formulario-produto.component';
 import { GerenciarProdutosComponent } from './produtos/components/gerenciar-produtos/gerenciar-produtos.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { ListaProdutosComponent } from './produtos/components/lista-produtos/lista-produtos.component';
 
 @NgModule({
@@ -16,7 +16,8 @@ import { ListaProdutosComponent } from './produtos/components/lista-produtos/lis
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FormularioProdutoComponent,

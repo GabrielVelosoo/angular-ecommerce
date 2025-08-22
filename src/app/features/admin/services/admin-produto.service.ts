@@ -33,10 +33,34 @@ export class AdminProdutoService {
     return this.http.post(this.apiUrl, formData);
   }
 
-  obterProdutos(nome?: string, pagina?: number, tamanhoPagina?: number): Observable<any> {
+  obterProdutos(
+    nome?: string,
+    precoMin?: number,
+    precoMax?: number,
+    estoqueMin?: number,
+    estoqueMax?: number,
+    categoriaId?: number,
+    pagina?: number,
+    tamanhoPagina?: number
+  ): Observable<any> {
     let params: any = {};
     if(nome !== undefined && nome !== null) {
       params['nome'] = nome;
+    }
+    if(precoMin !== undefined && precoMin !== null) {
+      params['precoMin'] = precoMin;
+    }
+    if(precoMax !== undefined && precoMax !== null) {
+      params['precoMax'] = precoMax;
+    }
+    if(estoqueMin !== undefined && estoqueMin !== null) {
+      params['estoqueMin'] = estoqueMin;
+    }
+    if(estoqueMax !== undefined && estoqueMax !== null) {
+      params['estoqueMax'] = estoqueMax;
+    }
+    if(categoriaId !== undefined && categoriaId !== null) {
+      params['categoriaId'] = categoriaId;
     }
     if(pagina !== undefined && pagina !== null) {
       params['pagina'] = pagina;
