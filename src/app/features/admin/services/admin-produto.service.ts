@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Produto } from '../../../models/produto/Produto';
+import { Filtro } from '../../../models/produto/Filtro';
 
 @Injectable({
   providedIn: 'root'
@@ -33,34 +34,25 @@ export class AdminProdutoService {
     return this.http.post(this.apiUrl, formData);
   }
 
-  obterProdutos(
-    nome?: string,
-    precoMin?: number,
-    precoMax?: number,
-    estoqueMin?: number,
-    estoqueMax?: number,
-    categoriaId?: number,
-    pagina?: number,
-    tamanhoPagina?: number
-  ): Observable<any> {
+  obterProdutos(filtros: Filtro, pagina?: number, tamanhoPagina?: number): Observable<any> {
     let params: any = {};
-    if(nome !== undefined && nome !== null) {
-      params['nome'] = nome;
+    if(filtros.nome !== undefined && filtros.nome !== null) {
+      params['nome'] = filtros.nome;
     }
-    if(precoMin !== undefined && precoMin !== null) {
-      params['precoMin'] = precoMin;
+    if(filtros.precoMin !== undefined && filtros.precoMin !== null) {
+      params['precoMin'] = filtros.precoMin;
     }
-    if(precoMax !== undefined && precoMax !== null) {
-      params['precoMax'] = precoMax;
+    if(filtros.precoMax !== undefined && filtros.precoMax !== null) {
+      params['precoMax'] = filtros.precoMax;
     }
-    if(estoqueMin !== undefined && estoqueMin !== null) {
-      params['estoqueMin'] = estoqueMin;
+    if(filtros.estoqueMin !== undefined && filtros.estoqueMin !== null) {
+      params['estoqueMin'] = filtros.estoqueMin;
     }
-    if(estoqueMax !== undefined && estoqueMax !== null) {
-      params['estoqueMax'] = estoqueMax;
+    if(filtros.estoqueMax !== undefined && filtros.estoqueMax !== null) {
+      params['estoqueMax'] = filtros.estoqueMax;
     }
-    if(categoriaId !== undefined && categoriaId !== null) {
-      params['categoriaId'] = categoriaId;
+    if(filtros.categoriaId !== undefined && filtros.categoriaId !== null) {
+      params['categoriaId'] = filtros.categoriaId;
     }
     if(pagina !== undefined && pagina !== null) {
       params['pagina'] = pagina;
@@ -69,5 +61,10 @@ export class AdminProdutoService {
       params['tamanho-pagina'] = tamanhoPagina;
     }
     return this.http.get(this.apiUrl, { params });
+  }
+
+  excluirProduto(produtoId: number) {
+    const url: string = this.apiUrl + `/${produtoId}`;
+    return this.http.delete(url);
   }
 }

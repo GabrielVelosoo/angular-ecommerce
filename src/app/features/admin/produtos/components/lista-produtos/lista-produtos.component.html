@@ -6,10 +6,23 @@
       type="text"
       placeholder="Pesquisar produto..."
       [formControl]="searchControl"
-      (keyup.enter)="buscarProduto(searchControl.value || '')"
+      (keyup.enter)="buscarProdutos()"
     />
   </div>
 
+  <div class="filters-bar">
+    <select [(ngModel)]="filtros.categoriaId">
+      <option value="">Todas as categorias</option>
+      <option *ngFor="let c of categorias" [value]="c.id">{{ c.nome }}</option>
+    </select>
+
+    <input type="number" placeholder="Preço mínimo" [(ngModel)]="filtros.precoMin" />
+    <input type="number" placeholder="Preço máximo" [(ngModel)]="filtros.precoMax" />
+    <input type="number" placeholder="Estoque mínimo" [(ngModel)]="filtros.estoqueMin" />
+    <input type="number" placeholder="Estoque máximo" [(ngModel)]="filtros.estoqueMax" />
+
+    <button class="btn search-btn" (click)="buscarProdutos()">Filtrar</button>
+  </div>
 
   <table class="product-table">
     <thead>
@@ -31,11 +44,29 @@
       <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
       <td>
         <button class="btn edit-btn">Editar</button>
-        <button class="btn delete-btn">Excluir</button>
+        <button class="btn delete-btn" (click)="abrirModal(produto)">Excluir</button>
       </td>
     </tr>
     </tbody>
   </table>
 
+  <div class="pagination">
+    <button class="btn" [disabled]="pagina === 0" (click)="irParaPagina(pagina - 1)">Anterior</button>
+    <span>Página {{ pagina + 1 }} de {{ totalPaginas }}</span>
+    <button class="btn" [disabled]="pagina + 1 >= totalPaginas" (click)="irParaPagina(pagina + 1)">Próxima</button>
+  </div>
 
+</div>
+
+<div class="modal" *ngIf="mostrarModal">
+  <div class="modal-conteudo">
+    <span class="modal-fechar" (click)="fecharModal()">&times;</span>
+    <h2>ELIMINAR PRODUTO</h2>
+    <p>Você está prestes a eliminar este produto.<br>
+      Não será possível reverter a ação. Tem certeza?</p>
+    <div class="modal-botoes">
+      <button class="btn-voltar" (click)="fecharModal()">VOLTAR</button>
+      <button class="btn-confirmar" (click)="confirmaExclusao()">SIM, ELIMINE</button>
+    </div>
+  </div>
 </div>
