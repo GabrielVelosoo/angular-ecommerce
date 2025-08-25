@@ -11,9 +11,14 @@
   </div>
 
   <div class="filters-bar">
-    <select [(ngModel)]="filtros.categoriaId">
-      <option value="">Todas as categorias</option>
-      <option *ngFor="let c of categorias" [value]="c.id">{{ c.nome }}</option>
+    <select [(ngModel)]="categoriaSelecionadaId" (ngModelChange)="onSelectCategoriaPai($event)">
+      <option [ngValue]="null">Todas as categorias</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nome }}</option>
+    </select>
+
+    <select *ngIf="subcategorias.length" [(ngModel)]="subcategoriaSelecionadaId">
+      <option [ngValue]="null">Ver tudo em {{ nomeCategoriaPai }}</option>
+      <option *ngFor="let subcategoria of subcategorias" [value]="subcategoria.id">{{ subcategoria.nome }}</option>
     </select>
 
     <input type="number" placeholder="Preço mínimo" [(ngModel)]="filtros.precoMin" />
@@ -40,7 +45,7 @@
         <img [src]="'http://localhost:8080' + produto.imagemUrl" alt="{{ produto.nome }}" class="product-img" />
       </td>
       <td>{{ produto.nome }}</td>
-      <td>{{ produto.categoria?.nome }}</td>
+        <td>{{ produto.categoriaPath }}</td>
       <td>R$ {{ produto.preco | number:'1.2-2' }}</td>
       <td>
         <button class="btn edit-btn">Editar</button>
@@ -62,8 +67,15 @@
   <div class="modal-conteudo">
     <span class="modal-fechar" (click)="fecharModal()">&times;</span>
     <h2>ELIMINAR PRODUTO</h2>
+
+    <div class="modal-produto">
+      <img [src]="'http://localhost:8080' + produtoSelecionado?.imagemUrl" alt="{{ produtoSelecionado?.nome }}" />
+      <h3>{{ produtoSelecionado?.nome }}</h3>
+    </div>
+
     <p>Você está prestes a eliminar este produto.<br>
       Não será possível reverter a ação. Tem certeza?</p>
+
     <div class="modal-botoes">
       <button class="btn-voltar" (click)="fecharModal()">VOLTAR</button>
       <button class="btn-confirmar" (click)="confirmaExclusao()">SIM, ELIMINE</button>

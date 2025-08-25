@@ -4,5 +4,5 @@ export class Filtro {
   precoMax?: number;
   estoqueMin?: number;
   estoqueMax?: number;
-  categoriaId?: number;
+  categoriaId?: number | null;
 }

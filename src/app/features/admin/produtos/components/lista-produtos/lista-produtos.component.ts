@@ -18,6 +18,10 @@ export class ListaProdutosComponent implements OnInit, OnDestroy {
   produtos: Produto[] = [];
   filtros: Filtro = new Filtro();
   categorias: Categoria[] = [];
+  subcategorias: Categoria[] = [];
+  categoriaSelecionadaId: number | null = null;
+  subcategoriaSelecionadaId: number | null = null;
+  nomeCategoriaPai?: string = '';
   pagina: number = 0;
   tamanhoPagina: number = 10;
   totalPaginas: number = 1;
@@ -49,6 +53,7 @@ export class ListaProdutosComponent implements OnInit, OnDestroy {
   }
 
   buscarProdutos(){
+    this.filtros.categoriaId = this.subcategoriaSelecionadaId || this.categoriaSelecionadaId;
     this.adminProdutoService
       .obterProdutos(this.filtros, this.pagina, this.tamanhoPagina)
       .subscribe({
@@ -60,6 +65,13 @@ export class ListaProdutosComponent implements OnInit, OnDestroy {
           console.log(error);
         }
       });
+  }
+
+  onSelectCategoriaPai(categoriaId: number) {
+    const categoria: Categoria | undefined = this.categorias.find(c => c.id === +categoriaId);
+    this.subcategorias = categoria?.subcategorias || [];
+    this.subcategoriaSelecionadaId = null;
+    this.nomeCategoriaPai = categoria ? categoria.nome : '';
   }
 
   irParaPagina(pagina: number) {

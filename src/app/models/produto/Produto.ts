@@ -9,4 +9,5 @@ export class Produto {
   imagem!: File;
   imagemUrl: string = '';
   categoria: Categoria = new Categoria();
+  categoriaPath?: string;
 }
